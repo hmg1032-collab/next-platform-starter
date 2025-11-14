@@ -1,44 +1,41 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import netlifyLogo from 'public/netlify-logo.svg';
-import githubLogo from 'public/images/horse-eye-logo.png';
+---
+const logoSrc = "/abhimanyu-logo.png"; // Make sure this image is inside the public/ folder
+const tagline = "Your wholesale partner in purity";
+---
 
-const navItems = [
-    { linkText: 'Home', href: '/' },
-    { linkText: 'Revalidation', href: '/revalidation' },
-    { linkText: 'Image CDN', href: '/image-cdn' },
-    { linkText: 'Edge Function', href: '/edge' },
-    { linkText: 'Blobs', href: '/blobs' },
-    { linkText: 'Classics', href: '/classics' },
-    { linkText: 'Middleware', href: '/middleware' },
-    { linkText: 'Routing', href: '/routing' }
-];
+<div class="logo-section">
+  <a href="/" class="logo-link" aria-label="Abhimanyu 3 Ltd">
+    <img src={logoSrc} alt="Abhimanyu 3 logo" class="logo-image" />
+  </a>
+  <p class="tagline">{tagline}</p>
+</div>
 
-export function Header() {
-    return (
-        <nav className="flex flex-wrap items-center gap-4 pt-6 pb-12 sm:pt-12 md:pb-24">
-            <Link href="/">
-                <Image src={netlifyLogo} alt="Netlify logo" />
-            </Link>
-            {!!navItems?.length && (
-                <ul className="flex flex-wrap gap-x-4 gap-y-1">
-                    {navItems.map((item, index) => (
-                        <li key={index}>
-                            <Link href={item.href} className="inline-flex px-1.5 py-1 sm:px-3 sm:py-2">
-                                {item.linkText}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            )}
-            <Link
-                href="https://github.com/netlify-templates/next-platform-starter"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-auto"
-            >
-                <Image src={githubLogo} alt="GitHub logo" className="w-7" />
-            </Link>
-        </nav>
-    );
-}
+<style>
+  .logo-section {
+    background-color: indigo;
+    background-image: url(/coffee-background.jpg); /* Optional: add this image to public/ */
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 4px solid #fff;
+  }
+
+  .logo-image {
+    height: 120px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+  }
+
+  .tagline {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+</style>
